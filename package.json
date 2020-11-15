@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tranhanam19999/NewsPaper_Server#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.10.14",
     "nodemon": "^2.0.6"
   }
 }
