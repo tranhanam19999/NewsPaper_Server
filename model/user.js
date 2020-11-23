@@ -7,7 +7,9 @@ const UserSchema = mongoose.Schema({
         username: {type:String},
         password: {type:String},
     },
+    createByDate: {type: String},
     roles: {type: String},
+    status: {type: String}
 })
 const User = mongoose.model('users', UserSchema,'users');
 module.exports = User;
