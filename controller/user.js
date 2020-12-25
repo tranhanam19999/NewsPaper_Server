@@ -3,7 +3,7 @@ const User = require('../model/user')
 module.exports.getUser = (req,res) => {
     res.json('You have come to the user!')
 }
-module.exports.getUser = async (req,res) => {
+module.exports.getAllUser = async (req,res) => {
     let user = await User.find({})
     res.json(user)
 }
@@ -21,7 +21,7 @@ module.exports.updateUser = async (req, res) => {
         res.status(500).send('Failed to update')
     }
 }
-module.exports.deletedUser = async (req,res) => {
+module.exports.deleteUser = async (req,res) => {
     console.log(req.body)
     try {
         let idToDelete = req.body._id
