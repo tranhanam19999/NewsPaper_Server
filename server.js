@@ -14,7 +14,7 @@ mongoose.connect(mongoURLLocal, { useNewUrlParser: true, useUnifiedTopology: tru
 const articleRoute = require('./route/article')
 const commentRoute = require('./route/comment')
 const userRoute = require('./route/user')
-
+const authRoute = require('./route/auth')
 const app = express()
 app.use(cors())
 
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/art', articleRoute)
 app.use('/user', userRoute)
 app.use('/cmt', commentRoute)
-
+app.use('/auth', authRoute)
 app.listen(5000, () => {
     console.log("Vjpper On " + 5000)
 })

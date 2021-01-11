@@ -32,3 +32,17 @@ module.exports.deletedComment = async (req,res) => {
         res.status(500).send('Error while trying to delete')
     }
 }
+module.exports.createCmt = async (req,res) => {
+    let today = new Date()
+    let cmtDetails = {
+        user: req.body.userId,
+        post: req.body.postId,
+        content: req.body.content,
+        createByDate: today.getUTCDate() + '/' + today.getMonth() + '/' + today.getFullYear() 
+              + ' at ' + 
+              today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    }
+    const newCmt = new Comment(cmtDetails)
+    const savedCmt = await newCmt.save()
+    res.status(200).send({ cmt: savedCmt })
+}
