@@ -11,6 +11,23 @@ module.exports.getById = async (req,res) => {
     let user = await User.find({_id: req.body.id})
     res.json(user)
 }
+module.exports.createUser = async (req, res) => {
+    try {
+        let user = req.body
+        let user = await User.find({'local.username': req.body.local.username})
+        if(user) {
+            res.status(500).send('Already ton tai user')
+        }
+        else {
+            const newUser = new User(user)
+            const savedUser = await newUser.save()
+            res.status(200).send({savedUser})
+        }
+    }
+    catch {
+        res.status(500).send('Failed to update')
+    }
+}
 module.exports.updateUser = async (req, res) => {
     try {
         let fieldToUpdate = req.body
