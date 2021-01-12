@@ -13,7 +13,7 @@ module.exports.getById = async (req,res) => {
 }
 module.exports.createUser = async (req, res) => {
     try {
-        let user = req.body
+        //let user = req.body
         let user = await User.find({'local.username': req.body.local.username})
         if(user) {
             res.status(500).send('Already ton tai user')
