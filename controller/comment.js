@@ -8,7 +8,7 @@ module.exports.getAll = async (req,res) => {
     res.json(cmt)
 }
 module.exports.getById = async (req,res) => {
-    let cmt = await Comment.find({_id: req.body.id})
+    let cmt = await Comment.find({post: req.body.post})
     res.json(cmt)
 }
 module.exports.updateComment = async (req, res) => {
@@ -22,7 +22,6 @@ module.exports.updateComment = async (req, res) => {
     }
 }
 module.exports.deletedComment = async (req,res) => {
-    console.log(req.body)
     try {
         let idToDelete = req.body._id
         const deletedComment = await Comment.findOneAndDelete({_id:idToDelete})
