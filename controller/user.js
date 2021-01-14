@@ -15,11 +15,11 @@ module.exports.createUser = async (req, res) => {
     try {
         //let user = req.body
         let user = await User.find({'local.username': req.body.local.username})
-        if(user) {
+        if(user == []) {
             res.status(500).send('Already ton tai user')
         }
         else {
-            const newUser = new User(user)
+            const newUser = new User(req.body)
             const savedUser = await newUser.save()
             res.status(200).send({savedUser})
         }
